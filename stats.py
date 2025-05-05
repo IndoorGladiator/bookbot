@@ -8,3 +8,11 @@ def count_letters(text):
     for letter in text.lower():
         letter_map[letter] += 1
     return letter_map
+
+def report(letters):
+    letter_list = list()
+    for key in letters:
+        letter_list.append({"char" : key, "num": letters[key]})
+    letter_list.sort(reverse = True, key=lambda k: k['num'])
+    return letter_list
+
