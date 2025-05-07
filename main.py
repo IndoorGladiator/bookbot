@@ -1,11 +1,16 @@
 from stats import *
+import sys
 
 def get_book_text(book_filepath):
     return open(book_filepath).read()
 
 def main():
-    book = get_book_text("books/frankenstein.txt")
+    if len(sys.argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    book = get_book_text(sys.argv[1])
     report_book(book)
+    sys.exit(0)
 
 def report_book(book):
     print("----------- Word Count ----------")
@@ -19,5 +24,4 @@ def report_book(book):
             n = letter["num"]
             print(f"{c}: {n}")
         
-
 main()
